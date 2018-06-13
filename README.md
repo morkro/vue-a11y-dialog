@@ -101,7 +101,7 @@ export default {
 </a11y-dialog>
 ```
 
-### `appRoot`
+### `app-root`
 -   **Property**: `appRoot`
 -   **Type**: `String`, `Array<String>` — CSS Selector string.
 -   **Required**: `true`
@@ -113,20 +113,20 @@ export default {
 </a11y-dialog>
 ```
 
-### `classNames`
--   **Property**: `classNames`
+### `class-names`
+-   **Property**: `class-names`
 -   **Type**: `Object`
 -   **Required**: `false`
 -   **Default**: `{}`
 -   **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `element`, `document`, `title`, `closeButton`. See [a11y-dialog docs](http://edenspiekermann.github.io/a11y-dialog/#expected-dom-structure) for reference.
 -   **Usage**:
 ```html
-<a11y-dialog :classNames="{ base: 'base-class', overlay: 'overlay-class' }">
+<a11y-dialog :class-names="{ base: 'base-class', overlay: 'overlay-class' }">
   <!-- ... -->
 </a11y-dialog>
 ```
 
-### `titleId`
+### `title-id`
 -   **Property**: `titleId`
 -   **Type**: `String`
 -   **Required**: `false`
@@ -139,7 +139,7 @@ export default {
 </a11y-dialog>
 ```
 
-### `closeButtonLabel`
+### `close-button-label`
 -   **Property**: `closeButtonLabel`
 -   **Type**: `String`
 -   **Required**: `false`
@@ -177,7 +177,7 @@ export default {
 ## Slots
 
 ### `title`
--   **Property**: `closeButtonLabel`
+-   **Name**: `title`
 -   **Default**: `\u00D7` (×)
 -   **Description**: The title of the dialog, mandatory in the document to provide context to assistive technology. Could be [hidden with CSS](https://hugogiraudel.com/2016/10/13/css-hide-and-seek/) (while remaining accessible).
 -   **Usage**:
@@ -189,7 +189,7 @@ export default {
 ```
 
 ### `closeButtonContent`
--   **Property**: `closeButtonLabel`
+-   **Name**: `closeButtonLabel`
 -   **Default**: `\u00D7` (×)
 -   **Description**: The string that is the inner HTML of the close button.
 -   **Usage**:
