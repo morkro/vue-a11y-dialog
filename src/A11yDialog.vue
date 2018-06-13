@@ -3,21 +3,17 @@
     <div
       tabIndex="-1"
       :class="classNames.overlay"
-      @click="close"
-    />
-
-    <dialog
-      :class="classNames.element"
-      :aria-labelledby="titleId"
-    >
+      @click="close" />
+    <dialog :class="classNames.element" :aria-labelledby="titleId">
       <div role="document" :class="classNames.document">
         <button
           type="button"
           :aria-label="closeButtonLabel"
           @click="close"
-          :class="classNames.closeButton"
-        >
-          <slot name="closeButtonContent">{{'\u00D7'}}</slot>
+          :class="classNames.closeButton">
+          <slot name="closeButtonContent">
+            {{ '\u00D7' }}
+          </slot>
         </button>
 
         <h1 :id="fullTitleId" :class="classNames.title">
@@ -34,7 +30,8 @@
   import A11yDialog from 'a11y-dialog'
 
   export default {
-    name: 'vue-a11y-dialog',
+    name: 'VueA11yDialog',
+
     props: {
       id: { type: String, required: true },
       appRoot: { type: [String, Array], required: true },
@@ -42,25 +39,29 @@
       titleId: { type: String },
       closeButtonLabel: { type: String, default: 'Close this dialog window' }
     },
+
     computed: {
-      fullTitleId() {
+      fullTitleId () {
         return this.titleId || this.id + '-title'
       }
     },
+
     data: () => ({
       dialog: null
     }),
+
     methods: {
-      close() {
+      close () {
         this.dialog.hide()
       }
     },
-    mounted() {
+
+    mounted () {
       this.dialog = new A11yDialog(this.$refs.rootElement, this.appRoot)
-      console.log('mounted', this.dialog)
       this.$emit('dialog-ref', this.dialog)
     },
-    destroyed() {
+
+    destroyed () {
       if (this.dialog) {
         this.dialog.destroy()
       }
