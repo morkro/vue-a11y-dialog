@@ -1,12 +1,18 @@
 <template>
   <div :id="id" :class="classNames.base" ref="rootElement">
     <div
+      data-a11y-dialog-hide
       tabIndex="-1"
       :class="classNames.overlay"
       @click="close" />
-    <dialog :class="classNames.element" :aria-labelledby="titleId">
+
+    <component :is="dialogElement"
+      role="dialog"
+      :class="classNames.element"
+      :aria-labelledby="titleId">
       <div role="document" :class="classNames.document">
         <button
+          data-a11y-dialog-hide
           type="button"
           :aria-label="closeButtonLabel"
           @click="close"
@@ -22,7 +28,7 @@
 
         <slot />
       </div>
-    </dialog>
+    </component>
   </div>
 </template>
 
@@ -37,12 +43,16 @@
       appRoot: { type: [String, Array], required: true },
       classNames: { type: Object, default: () => ({}) },
       titleId: { type: String },
-      closeButtonLabel: { type: String, default: 'Close this dialog window' }
+      closeButtonLabel: { type: String, default: 'Close this dialog window' },
+      disableNative: { type: Boolean, default: false }
     },
 
     computed: {
       fullTitleId () {
         return this.titleId || this.id + '-title'
+      },
+      dialogElement () {
+        return this.disableNative ? 'div' : 'dialog'
       }
     },
 

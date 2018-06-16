@@ -1,6 +1,6 @@
 # Vue A11yDialog
 
-This is a Vue.js wrapper component for [`a11y-dialog`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+This is a Vue.js wrapper component for [`a11y-dialog@5.1.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
 
 -   [Install](#install)
 -   [Usage](#usage)
@@ -88,6 +88,18 @@ export default {
 ## API
 
 > All `a11y-dialog` instance methods are available, see their [docs](https://github.com/edenspiekermann/a11y-dialog#js-api) for more.
+
+### `disable-native`
+-   **Property**: `disable-native`
+-   **Type**: `Boolean`
+-   **Default**: `false`
+-   **Description**: Per default we're using the native `<dialog>` element. However, if you want to disable that and use a `<div role="dialog">` instead, you can just do that by adding this attribute. This gives you full control (and responsibilites) over styling. Read the [`a11y-dialog` Styling layer documentation](http://edenspiekermann.github.io/a11y-dialog/#styling-layer) for more information.
+-   **Usage**:
+```html
+<a11y-dialog disable-native>
+  <!-- ... -->
+</a11y-dialog>
+```
 
 ### `id`
 -   **Property**: `id`
