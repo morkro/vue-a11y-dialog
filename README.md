@@ -33,7 +33,7 @@ Then use it as follows:
     <!-- ... -->
     <button type="button" @click="openDialog">
       Open dialog
-    <button>
+    </button>
 
     <a11y-dialog id="app-dialog" app-root="#app" @dialog-ref="assignDialogRef">
       <h1 slot="title">Your dialog title</h1>
