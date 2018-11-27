@@ -164,6 +164,19 @@ export default {
 </a11y-dialog>
 ```
 
+### `role`
+-   **Property**: `role`
+-   **Type**: `String`
+-   **Required**: `false`
+-   **Default**: `dialog`
+-   **Description**: The `role` attribute of the dialog element, either `dialog` (default) or `alertdialog` to make it a modal (preventing closing on click outside of <kbd>ESC</kbd> key).
+-   **Usage**:
+```html
+<a11y-dialog role="alertdialog">
+  <!-- ... -->
+</a11y-dialog>
+```
+
 ## Events
 
 ### `dialog-ref`

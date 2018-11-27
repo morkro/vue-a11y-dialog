@@ -4,10 +4,10 @@
       data-a11y-dialog-hide
       tabIndex="-1"
       :class="classNames.overlay"
-      @click="close" />
+      @click="role === 'alertdialog' ? undefined : close" />
 
     <component :is="dialogElement"
-      role="dialog"
+      :role="role"
       :class="classNames.element"
       :aria-labelledby="titleId">
       <div role="document" :class="classNames.document">
@@ -35,6 +35,10 @@
 <script>
   import A11yDialog from 'a11y-dialog'
 
+  function roleValidator (value) {
+    return ['dialog', 'alertdialog'].includes(value)
+  }
+
   export default {
     name: 'VueA11yDialog',
 
@@ -44,7 +48,8 @@
       classNames: { type: Object, default: () => ({}) },
       titleId: { type: String },
       closeButtonLabel: { type: String, default: 'Close this dialog window' },
-      disableNative: { type: Boolean, default: false }
+      disableNative: { type: Boolean, default: false },
+      role: { type: String, default: 'dialog', validator: roleValidator }
     },
 
     computed: {
