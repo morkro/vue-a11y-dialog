@@ -7,7 +7,7 @@
       @click="role === 'alertdialog' ? undefined : close" />
 
     <component :is="dialogElement"
-      :role="role"
+      :role="roleAttribute"
       :class="classNames.element"
       :aria-labelledby="titleId">
       <div role="document" :class="classNames.document">
@@ -35,10 +35,6 @@
 <script>
   import A11yDialog from 'a11y-dialog'
 
-  function roleValidator (value) {
-    return ['dialog', 'alertdialog'].includes(value)
-  }
-
   export default {
     name: 'VueA11yDialog',
 
@@ -49,7 +45,7 @@
       titleId: { type: String },
       closeButtonLabel: { type: String, default: 'Close this dialog window' },
       disableNative: { type: Boolean, default: false },
-      role: { type: String, default: 'dialog', validator: roleValidator }
+      role: { type: String, default: 'dialog' }
     },
 
     computed: {
@@ -58,6 +54,13 @@
       },
       dialogElement () {
         return this.disableNative ? 'div' : 'dialog'
+      },
+      roleAttribute () {
+        if (['dialog', 'alertdialog'].includes(this.role)) {
+          return this.role
+        } else {
+          return 'dialog'
+        }
       }
     },
 
