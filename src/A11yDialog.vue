@@ -4,10 +4,10 @@
       data-a11y-dialog-hide
       tabIndex="-1"
       :class="classNames.overlay"
-      @click="close" />
+      @click="role === 'alertdialog' ? undefined : close" />
 
     <component :is="dialogElement"
-      role="dialog"
+      :role="roleAttribute"
       :class="classNames.element"
       :aria-labelledby="titleId">
       <div role="document" :class="classNames.document">
@@ -44,7 +44,8 @@
       classNames: { type: Object, default: () => ({}) },
       titleId: { type: String },
       closeButtonLabel: { type: String, default: 'Close this dialog window' },
-      disableNative: { type: Boolean, default: false }
+      disableNative: { type: Boolean, default: false },
+      role: { type: String, default: 'dialog' }
     },
 
     computed: {
@@ -53,6 +54,13 @@
       },
       dialogElement () {
         return this.disableNative ? 'div' : 'dialog'
+      },
+      roleAttribute () {
+        if (['dialog', 'alertdialog'].includes(this.role)) {
+          return this.role
+        } else {
+          return 'dialog'
+        }
       }
     },
 

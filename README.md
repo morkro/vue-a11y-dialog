@@ -1,6 +1,6 @@
 # Vue A11yDialog
 
-This is a Vue.js wrapper component for [`a11y-dialog@5.1.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+This is a Vue.js wrapper component for [`a11y-dialog@5.2.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
 
 -   [Install](#install)
 -   [Usage](#usage)
@@ -160,6 +160,19 @@ export default {
 -   **Usage**:
 ```html
 <a11y-dialog close-button-label="Close this super dialog">
+  <!-- ... -->
+</a11y-dialog>
+```
+
+### `role`
+-   **Property**: `role`
+-   **Type**: `String`
+-   **Required**: `false`
+-   **Default**: `dialog`
+-   **Description**: The `role` attribute of the dialog element, either `dialog` (default) or `alertdialog` to make it a modal (preventing closing on click outside of <kbd>ESC</kbd> key).
+-   **Usage**:
+```html
+<a11y-dialog role="alertdialog">
   <!-- ... -->
 </a11y-dialog>
 ```
