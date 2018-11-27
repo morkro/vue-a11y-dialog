@@ -19,7 +19,9 @@ export default {
     }),
     commonjs(),
     vue({ css: true }),
-    babel(),
+    babel({
+      include: ['node_modules/a11y-dialog']
+    }),
     minify({ comments: false })
   ]
 }
