@@ -18,7 +18,10 @@ export default {
       extensions: ['.vue', '.js']
     }),
     commonjs(),
-    vue({ css: true }),
+    vue({
+      template: { isProduction: true },
+      css: true
+    }),
     babel({
       include: ['node_modules/a11y-dialog']
     }),
