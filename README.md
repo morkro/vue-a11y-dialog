@@ -71,12 +71,12 @@ It's important to assign the direct reference to the dialog instance via `@dialo
 Alternatively, you can also import the component directly into your file without installing it first:
 
 ```js
-import { VueA11yDialog } from 'vue-a11y-dialog'
+import { A11yDialog } from 'vue-a11y-dialog'
 export default {
   name: 'YourComponent',
 
   components: {
-    'a11y-dialog': VueA11yDialog
+    'a11y-dialog': A11yDialog
   },
 
   methods: {
