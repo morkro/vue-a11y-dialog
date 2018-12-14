@@ -35,7 +35,12 @@ Then use it as follows:
       Open dialog
     </button>
 
-    <a11y-dialog id="app-dialog" app-root="#app" @dialog-ref="assignDialogRef">
+    <a11y-dialog
+      id="app-dialog"
+      app-root="#app"
+      dialog-root="#dialog-root"
+      @dialog-ref="assignDialogRef"
+    >
       <h1 slot="title">Your dialog title</h1>
       <div>
         <p>Your content</p>
