@@ -65,6 +65,9 @@ export default {
   }
 }
 ```
+
+In your `index.html`, add a container where your dialog will be rendered into.
+
 ```html
 <!DOCTYPE html>
 <html>
