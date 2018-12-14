@@ -21,6 +21,13 @@ module.exports = {
         'allowFirstLine': true
       }
     }],
+    'vue/component-name-in-template-casing': ['error', 'kebab-case', {
+      'ignores': []
+    }],
+    'vue/html-closing-bracket-newline': ['error', {
+      'singleline': 'never',
+      'multiline': 'never'
+    }],
     'indent': 'off',
     // allow paren-less arrow functions
     'arrow-parens': 'off',
