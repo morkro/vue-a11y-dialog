@@ -1,6 +1,6 @@
 # Vue A11yDialog
 
-This is a Vue.js wrapper component for [`a11y-dialog@5.2.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+This is a Vue.js wrapper component for [`a11y-dialog@5.2.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)) using [PortalVue](https://github.com/LinusBorg/portal-vue).
 
 -   [Install](#install)
 -   [Usage](#usage)
