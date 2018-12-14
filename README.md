@@ -65,6 +65,16 @@ export default {
   }
 }
 ```
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <div id="dialog-root"></div>
+  </body>
+</html>
+```
 
 It's important to assign the direct reference to the dialog instance via `@dialog-ref`, otherwise there is no way to call its methods.
 
@@ -114,13 +124,25 @@ export default {
 ```
 
 ### `app-root`
--   **Property**: `appRoot`
+-   **Property**: `app-root`
 -   **Type**: `String`, `Array<String>` — CSS Selector string.
 -   **Required**: `true`
 -   **Description**: The selector(s) `a11y-dialog` needs to disable when the dialog is open.
 -   **Usage**:
 ```html
 <a11y-dialog app-root="#app">
+  <!-- ... -->
+</a11y-dialog>
+```
+
+### `dialog-root`
+-   **Property**: `dialog-root`
+-   **Type**: `String` — CSS Selector string.
+-   **Required**: `true`
+-   **Description**: The container for the dialog to be rendered into.
+-   **Usage**:
+```html
+<a11y-dialog dialog-root="#dialog-root">
   <!-- ... -->
 </a11y-dialog>
 ```
@@ -139,7 +161,7 @@ export default {
 ```
 
 ### `title-id`
--   **Property**: `titleId`
+-   **Property**: `title-id`
 -   **Type**: `String`
 -   **Required**: `false`
 -   **Default**: Defaults to `id + '-title'`.
@@ -152,7 +174,7 @@ export default {
 ```
 
 ### `close-button-label`
--   **Property**: `closeButtonLabel`
+-   **Property**: `close-button-label`
 -   **Type**: `String`
 -   **Required**: `false`
 -   **Default**: `'Close this dialog window'`

@@ -1,7 +1,7 @@
 {
   "name": "vue-a11y-dialog",
   "description": "Vue.js component wrapping for a11y-dialog",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "homepage": "https://github.com/morkro/vue-a11y-dialog",
   "license": "MIT",
   "author": "Moritz Kröger (https://moritz.berlin)",
@@ -30,7 +30,8 @@
     "url": "https://github.com/morkro/vue-a11y-dialog"
   },
   "dependencies": {
-    "a11y-dialog": "^5.2.0"
+    "a11y-dialog": "^5.2.0",
+    "portal-vue": "^1.5.0"
   },
   "peerDependencies": {
     "vue": "2.x"
@@ -38,15 +39,15 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^5.9.0",
-    "eslint-plugin-vue": "^4.7.1",
-    "rollup": "^0.67.3",
-    "rollup-plugin-babel": "^4.0.3",
+    "eslint": "^5.10.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-vue": "^4.3.2",
     "standard": "^12.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.21"
   }
 }

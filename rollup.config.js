@@ -17,13 +17,17 @@ export default {
     resolve({
       extensions: ['.vue', '.js']
     }),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        'node_modules/portal-vue/dist/portal-vue.js': ['Portal']
+      }
+    }),
     vue({
       template: { isProduction: true },
       css: true
     }),
     babel({
-      include: ['node_modules/a11y-dialog']
+      include: ['node_modules/a11y-dialog', 'node_modules/portal-vue']
     }),
     minify({ comments: false })
   ]
