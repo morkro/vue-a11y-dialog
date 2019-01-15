@@ -238,7 +238,7 @@ export default {
 -   **Usage**:
 ```html
 <a11y-dialog>
-  <h1 slot="title">Your dialog title</h1>
+  <span slot="title">Your dialog title</span>
   <!-- ... -->
 </a11y-dialog>
 ```
