@@ -41,7 +41,7 @@ Then use it as follows:
       dialog-root="#dialog-root"
       @dialog-ref="assignDialogRef"
     >
-      <h1 slot="title">Your dialog title</h1>
+      <span slot="title">Your dialog title</span>
       <div>
         <p>Your content</p>
       </div>
