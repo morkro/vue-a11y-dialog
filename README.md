@@ -41,7 +41,9 @@ Then use it as follows:
       dialog-root="#dialog-root"
       @dialog-ref="assignDialogRef"
     >
-      <span slot="title">Your dialog title</span>
+      <template v-slot:title>
+        <span>Your dialog title</span>
+      </template>
       <div>
         <p>Your content</p>
       </div>
@@ -238,7 +240,9 @@ export default {
 -   **Usage**:
 ```html
 <a11y-dialog>
-  <span slot="title">Your dialog title</span>
+  <template v-slot:title>
+    <span>Your dialog title</span>
+  </template>
   <!-- ... -->
 </a11y-dialog>
 ```
@@ -250,7 +254,9 @@ export default {
 -   **Usage**:
 ```html
 <a11y-dialog>
-  <span slot="closeButtonContent">Close dialog</span>
+  <template v-slot:closeButtonContent>
+    <span>Close dialog</span>
+  </template>
   <!-- ... -->
 </a11y-dialog>
 ```
