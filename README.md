@@ -235,7 +235,6 @@ export default {
 
 ### `title`
 -   **Name**: `title`
--   **Default**: `\u00D7` (×)
 -   **Description**: The title of the dialog, mandatory in the document to provide context to assistive technology. Could be [hidden with CSS](https://hugogiraudel.com/2016/10/13/css-hide-and-seek/) (while remaining accessible).
 -   **Usage**:
 ```html
