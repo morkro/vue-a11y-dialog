@@ -1,6 +1,9 @@
 // https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
+  env: {
+    jest: true
+  },
   extends: [
     'plugin:vue/strongly-recommended',
     'standard'
