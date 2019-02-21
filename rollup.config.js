@@ -11,8 +11,12 @@ export default {
     exports: 'named',
     format: 'umd',
     name: 'VueA11yDialog',
-    sourcemap: false
+    sourcemap: false,
+    globals: {
+      vue: 'vue'
+    }
   },
+  external: ['vue'],
   plugins: [
     resolve({
       extensions: ['.vue', '.js']
