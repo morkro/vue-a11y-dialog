@@ -1,9 +1,10 @@
 # Vue A11yDialog
 
-This is a Vue.js wrapper component for [`a11y-dialog@5.2.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)) using [PortalVue](https://github.com/LinusBorg/portal-vue).
+This is a Vue.js wrapper component for [`a11y-dialog@5.2.0`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)) using [PortalVue@2.1.0](https://github.com/LinusBorg/portal-vue).
 
 -   [Install](#install)
 -   [Usage](#usage)
+    -   [Multiple dialogs](#multiple-dialogs)
 -   [API](#api)
 -   [Events](#events)
 -   [Slots](#slots)
@@ -105,11 +106,72 @@ export default {
 }
 ```
 
+### Multiple dialogs
+
+It's possible to use multiple dialogs in the same component, just make sure to assign the different `dialog` instances separately.
+
+In your `<template>`:
+
+```html
+<template>
+  <div id="app">
+    <!-- First dialog -->
+    <a11y-dialog
+      id="first-dialog"
+      app-root="#app"
+      dialog-root="#dialog-root"
+      @dialog-ref="dialog => assignDialogRef('first', dialog)"
+    >
+      <template v-slot:title>
+        <span>First dialog title</span>
+      </template>
+      <div>
+        <p>Your content</p>
+      </div>
+    </a11y-dialog>
+
+    <!-- Second dialog -->
+    <a11y-dialog
+      id="second-dialog"
+      app-root="#app"
+      dialog-root="#dialog-root"
+      @dialog-ref="dialog => assignDialogRef('second', dialog)"
+    >
+      <template v-slot:title>
+        <span>Second dialog title</span>
+      </template>
+      <div>
+        <p>Your content</p>
+      </div>
+    </a11y-dialog>
+  </div>
+</template>
+```
+
+In your `<script>`:
+```js
+import { A11yDialog } from 'vue-a11y-dialog'
+export default {
+  name: 'YourComponent',
+
+  data: () => ({
+    dialogs: {}
+  }),
+
+  methods: {
+    assignDialogRef (type, dialog) {
+      this.dialogs[type] = dialog
+    }
+  }
+}
+
+
 ## API
 
 > All `a11y-dialog` instance methods are available, see their [docs](https://github.com/edenspiekermann/a11y-dialog#js-api) for more.
 
 ### `disable-native`
+
 -   **Property**: `disable-native`
 -   **Type**: `Boolean`
 -   **Default**: `false`
@@ -122,6 +184,7 @@ export default {
 ```
 
 ### `id`
+
 -   **Property**: `id`
 -   **Type**: `String`
 -   **Required**: `true`
@@ -134,6 +197,7 @@ export default {
 ```
 
 ### `app-root`
+
 -   **Property**: `app-root`
 -   **Type**: `String`, `Array<String>` — CSS Selector string.
 -   **Required**: `true`
@@ -146,6 +210,7 @@ export default {
 ```
 
 ### `dialog-root`
+
 -   **Property**: `dialog-root`
 -   **Type**: `String` — CSS Selector string.
 -   **Required**: `true`
@@ -158,6 +223,7 @@ export default {
 ```
 
 ### `class-names`
+
 -   **Property**: `class-names`
 -   **Type**: `Object`
 -   **Required**: `false`
@@ -171,6 +237,7 @@ export default {
 ```
 
 ### `title-id`
+
 -   **Property**: `title-id`
 -   **Type**: `String`
 -   **Required**: `false`
@@ -184,6 +251,7 @@ export default {
 ```
 
 ### `close-button-label`
+
 -   **Property**: `close-button-label`
 -   **Type**: `String`
 -   **Required**: `false`
@@ -197,6 +265,7 @@ export default {
 ```
 
 ### `role`
+
 -   **Property**: `role`
 -   **Type**: `String`
 -   **Required**: `false`
@@ -212,6 +281,7 @@ export default {
 ## Events
 
 ### `dialog-ref`
+
 -   **Returns**: An `a11y-dialog` instance or `undefined`.
 -   **Description**:  This event emits the `a11y-dialog` instance once the component has been initialised. When it gets `destroyed`, the event returns `undefined`. This is needed to call instance methods of the dialog, e.g. `this.dialog.show()`.
 -   **Usage**:
@@ -234,6 +304,7 @@ export default {
 ## Slots
 
 ### `title`
+
 -   **Name**: `title`
 -   **Description**: The title of the dialog, mandatory in the document to provide context to assistive technology. Could be [hidden with CSS](https://hugogiraudel.com/2016/10/13/css-hide-and-seek/) (while remaining accessible).
 -   **Usage**:
@@ -247,6 +318,7 @@ export default {
 ```
 
 ### `closeButtonContent`
+
 -   **Name**: `closeButtonLabel`
 -   **Default**: `\u00D7` (×)
 -   **Description**: The string that is the inner HTML of the close button.
