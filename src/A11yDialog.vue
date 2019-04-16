@@ -1,5 +1,5 @@
 <template>
-  <portal :target-el="portalTarget">
+  <mounting-portal append :mount-to="portalTarget">
     <div :id="id" :class="classNames.base" ref="rootElement">
       <div
         data-a11y-dialog-hide
@@ -31,12 +31,12 @@
         </div>
       </component>
     </div>
-  </portal>
+  </mounting-portal>
 </template>
 
 <script>
   import A11yDialog from 'a11y-dialog'
-  import { Portal } from 'portal-vue'
+  import { MountingPortal } from 'portal-vue'
 
   export default {
     name: 'VueA11yDialog',
@@ -53,7 +53,7 @@
     },
 
     components: {
-      Portal
+      MountingPortal
     },
 
     computed: {
