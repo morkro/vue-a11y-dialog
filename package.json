@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "a11y-dialog": "^5.2.0",
-    "portal-vue": "^1.5.1"
+    "portal-vue": "^2.1.0"
   },
   "peerDependencies": {
     "vue": "2.x"
