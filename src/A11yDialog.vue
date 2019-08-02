@@ -81,8 +81,23 @@
     },
 
     methods: {
+      open () {
+        this.$emit('a11y-dialog-opening')
+        this.dialog.show()
+      },
       close () {
+        this.$emit('a11y-dialog-closing')
         this.dialog.hide()
+      }
+    },
+
+    watch: {
+      'dialog.shown' (val) {
+        if (val) {
+          this.$emit('a11y-dialog-opened')
+        } else {
+          this.$emit('a11y-dialog-closed')
+        }
       }
     },
 
