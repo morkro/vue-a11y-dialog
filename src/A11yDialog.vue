@@ -7,7 +7,8 @@
         :class="classNames.overlay"
         @click="role === 'alertdialog' ? undefined : close" />
 
-      <component :is="dialogElement"
+      <component
+        :is="dialogElement"
         :role="roleAttribute"
         :class="classNames.element"
         :aria-labelledby="titleId">
@@ -73,9 +74,11 @@
       }
     },
 
-    data: () => ({
-      dialog: null
-    }),
+    data () {
+      return {
+        dialog: null
+      }
+    },
 
     methods: {
       close () {
