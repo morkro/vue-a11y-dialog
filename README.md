@@ -301,6 +301,90 @@ export default {
 }
 ```
 
+### `a11y-dialog-opening`
+
+-   **Returns**: `undefined`.
+-   **Description**: Event emitted before the `show()` method is called on the A11yDialog instance
+-   **Usage**:
+```html
+<a11y-dialog @a11y-dialog-opening="onDialogOpening">
+  <!-- ... -->
+</a11y-dialog>
+```
+```js
+export default {
+  // ...
+  methods: {
+    onDialogOpening () {
+      // Pre dialog opening logic
+    }
+  }
+}
+```
+
+### `a11y-dialog-opened`
+
+-   **Returns**: `undefined`.
+-   **Description**: Event emitted after the `show()` method has been called on the A11yDialog instance
+-   **Usage**:
+```html
+<a11y-dialog @a11y-dialog-opened="onDialogOpened">
+  <!-- ... -->
+</a11y-dialog>
+```
+```js
+export default {
+  // ...
+  methods: {
+    onDialogOpened () {
+      // After dialog opening logic
+    }
+  }
+}
+```
+
+### `a11y-dialog-closing`
+
+-   **Returns**: `undefined`.
+-   **Description**: Event emitted before the `hide()` method is called on the A11yDialog instance
+-   **Usage**:
+```html
+<a11y-dialog @a11y-dialog-closing="onDialogClosing">
+  <!-- ... -->
+</a11y-dialog>
+```
+```js
+export default {
+  // ...
+  methods: {
+    onDialogClosing () {
+      // Pre dialog closing logic
+    }
+  }
+}
+```
+
+### `a11y-dialog-closed`
+
+-   **Returns**: `undefined`.
+-   **Description**: Event emitted after the `hide()` method is called on the A11yDialog instance
+-   **Usage**:
+```html
+<a11y-dialog @a11y-dialog-closing="onDialogClosed">
+  <!-- ... -->
+</a11y-dialog>
+```
+```js
+export default {
+  // ...
+  methods: {
+    onDialogClosed () {
+      // After dialog closed logic
+    }
+  }
+}
+```
+
 ## Slots
 
 ### `title`
