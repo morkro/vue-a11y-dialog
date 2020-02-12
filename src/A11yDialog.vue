@@ -45,7 +45,7 @@
       id: { type: String, required: true },
       appRoot: { type: [String, Array], required: true },
       dialogRoot: { type: String, required: true },
-      classNames: { type: Object, default: () => ({}) },
+      classNames: { type: Object, default () { return {} } },
       titleId: { type: String },
       closeButtonLabel: { type: String, default: 'Close this dialog window' },
       disableNative: { type: Boolean, default: false },
@@ -73,9 +73,11 @@
       }
     },
 
-    data: () => ({
-      dialog: null
-    }),
+    data () {
+      return {
+        dialog: null
+      }
+    },
 
     methods: {
       close () {
@@ -84,10 +86,10 @@
     },
 
     mounted () {
-      this.$nextTick(() => {
+      this.$nextTick(function () {
         this.dialog = new A11yDialog(this.$refs.rootElement, this.appRoot)
         this.$emit('dialog-ref', this.dialog)
-      })
+      }.bind(this))
     },
 
     destroyed () {
