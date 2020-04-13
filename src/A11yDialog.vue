@@ -10,7 +10,7 @@
       <component :is="dialogElement"
         :role="roleAttribute"
         :class="classNames.element"
-        :aria-labelledby="titleId">
+        :aria-labelledby="fullTitleId">
         <div role="document" :class="classNames.document">
           <button
             data-a11y-dialog-hide
