@@ -20,10 +20,21 @@ npm install vue-a11y-dialog
 
 In your `main.js` application file, install the component:
 
+### In Vue 2
 ```js
 import VueA11yDialog from "vue-a11y-dialog";
 
 Vue.use(VueA11yDialog);
+```
+
+### In Vue 3
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+import VueA11yDialog from "vue-a11y-dialog";
+
+createApp(App).use(VueA11yDialog).mount('#app')
 ```
 
 Then use it as follows:
