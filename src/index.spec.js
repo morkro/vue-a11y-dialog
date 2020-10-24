@@ -1,6 +1,9 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, config } from '@vue/test-utils'
 import A11yDialog from 'a11y-dialog'
 import { A11yDialog as VueA11yDialog } from './'
+
+// Stubbing Vue 3's teleport
+config.stubs.teleport = '<div><slot /></div>'
 
 const isA11yDialogInstance = component => component instanceof A11yDialog
 
@@ -74,8 +77,5 @@ describe('VueA11yDialog', () => {
 
     wrapper.vm.close()
     expect(dialog.hide).toHaveBeenCalled()
-
-    wrapper.vm.$destroy()
-    expect(dialog.destroy).toHaveBeenCalled()
   })
 })

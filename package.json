@@ -31,8 +31,7 @@
     "url": "https://github.com/morkro/vue-a11y-dialog"
   },
   "dependencies": {
-    "a11y-dialog": "^5.3.1",
-    "portal-vue": "^2.1.7"
+    "a11y-dialog": "^5.4.1"
   },
   "peerDependencies": {
     "vue": "2.x"
