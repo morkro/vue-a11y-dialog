@@ -1,5 +1,5 @@
 <template>
-  <mounting-portal append :mount-to="portalTarget">
+  <teleport :to="portalTarget">
     <div :id="id" :class="classNames.base" ref="rootElement">
       <div
         data-a11y-dialog-hide
@@ -31,12 +31,11 @@
         </div>
       </component>
     </div>
-  </mounting-portal>
+  </teleport>
 </template>
 
 <script>
   import A11yDialog from 'a11y-dialog'
-  import { MountingPortal } from 'portal-vue'
 
   export default {
     name: 'VueA11yDialog',
@@ -50,10 +49,6 @@
       closeButtonLabel: { type: String, default: 'Close this dialog window' },
       disableNative: { type: Boolean, default: false },
       role: { type: String, default: 'dialog' }
-    },
-
-    components: {
-      MountingPortal
     },
 
     computed: {
@@ -92,7 +87,7 @@
       }.bind(this))
     },
 
-    destroyed () {
+    unmounted () {
       if (this.dialog) {
         this.dialog.destroy()
       }
