@@ -1,6 +1,10 @@
 # Vue A11yDialog [![Build Status](https://travis-ci.org/morkro/vue-a11y-dialog.svg?branch=master)](https://travis-ci.org/morkro/vue-a11y-dialog)
 
-This is a Vue.js wrapper component for [`a11y-dialog@5.3.1`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)) using [`portal-vue@2.1.7`](https://github.com/LinusBorg/portal-vue).
+This is a Vue.js wrapper component for [`a11y-dialog@5.4.1`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+
+**Vue 2 and 3**
+
+The newest major release of this package comes with Vue 3 support and removes the dependency to [`portal-vue@2.1.7`](https://github.com/LinusBorg/portal-vue). If you still need to support Vue 2, you can stay on version [`0.5.2`](https://github.com/morkro/vue-a11y-dialog/tree/0.5.2).
 
 - [Install](#install)
 - [Usage](#usage)
@@ -20,19 +24,20 @@ npm install vue-a11y-dialog
 
 In your `main.js` application file, install the component:
 
-### In Vue 2
-```js
-import VueA11yDialog from "vue-a11y-dialog";
+### Vue 2
 
-Vue.use(VueA11yDialog);
+```js
+import VueA11yDialog from 'vue-a11y-dialog'
+
+Vue.use(VueA11yDialog)
 ```
 
-### In Vue 3
+### Vue 3
+
 ```js
 import { createApp } from 'vue'
+import VueA11yDialog from 'vue-a11y-dialog'
 import App from './App.vue'
-
-import VueA11yDialog from "vue-a11y-dialog";
 
 createApp(App).use(VueA11yDialog).mount('#app')
 ```
@@ -66,7 +71,7 @@ Then use it as follows:
 
 ```js
 export default {
-  name: "YourComponent",
+  name: 'YourComponent',
 
   data: () => ({
     dialog: null
@@ -75,15 +80,15 @@ export default {
   methods: {
     openDialog() {
       if (this.dialog) {
-        this.dialog.show();
+        this.dialog.show()
       }
     },
 
     assignDialogRef(dialog) {
-      this.dialog = dialog;
+      this.dialog = dialog
     }
   }
-};
+}
 ```
 
 In your `index.html`, add a container where your dialog will be rendered into.
@@ -104,18 +109,18 @@ It's important to assign the direct reference to the dialog instance via `@dialo
 Alternatively, you can also import the component directly into your file without installing it first:
 
 ```js
-import { A11yDialog } from "vue-a11y-dialog";
+import { A11yDialog } from 'vue-a11y-dialog'
 export default {
-  name: "YourComponent",
+  name: 'YourComponent',
 
   components: {
-    "a11y-dialog": A11yDialog
+    'a11y-dialog': A11yDialog
   },
 
   methods: {
     // ...
   }
-};
+}
 ```
 
 ### Multiple dialogs
@@ -163,9 +168,9 @@ In your `<template>`:
 In your `<script>`:
 
 ```js
-import { A11yDialog } from "vue-a11y-dialog";
+import { A11yDialog } from 'vue-a11y-dialog';
 export default {
-  name: "YourComponent",
+  name: 'YourComponent',
 
   data: () => ({
     dialogs: {}
@@ -173,10 +178,10 @@ export default {
 
   methods: {
     assignDialogRef(type, dialog) {
-      this.dialogs[type] = dialog;
+      this.dialogs[type] = dialog
     }
   }
-};
+}
 ```
 
 ## API
@@ -318,10 +323,10 @@ export default {
   // ...
   methods: {
     assignDialogRef(dialog) {
-      this.dialog = dialog;
+      this.dialog = dialog
     }
   }
-};
+}
 ```
 
 ## Slots
