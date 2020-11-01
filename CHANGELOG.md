@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2020-11-01
+
+This is the first major release that introduces breaking changes. From `1.0.0` onwards the API will support Vue 3.
+
+### Changed
+
+- Updated API to support Vue 3 syntax [#25](https://github.com/morkro/vue-a11y-dialog/pull/25) (Thanks to [@marcus-herrmann](https://github.com/marcus-herrmann))
+
+### Removed
+
+- Removed dependency to `portal-vue`
+
 ## [0.5.2] - 2020-04-14
 
 ### Changed
