@@ -1,7 +1,7 @@
 {
   "name": "vue-a11y-dialog",
   "description": "Vue.js component wrapping for a11y-dialog",
-  "version": "0.5.2",
+  "version": "1.0.0",
   "homepage": "https://github.com/morkro/vue-a11y-dialog",
   "license": "MIT",
   "author": "Moritz Kröger (https://moritz.berlin)",
