@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     'vue'
   ],
-  // add your custom rules here
+  // custom rules
   rules: {
     'vue/script-indent': 'off',
     'vue/html-indent': 'off',
