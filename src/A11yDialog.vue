@@ -51,6 +51,8 @@
       role: { type: String, default: 'dialog' }
     },
 
+    emits: ['dialog-ref'],
+
     computed: {
       fullTitleId () {
         return this.titleId || this.id + '-title'
