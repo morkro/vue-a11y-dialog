@@ -2,8 +2,8 @@
   <teleport :to="portalTarget">
     <div
       :id="id"
-      :class="classNames.container"
       ref="rootElement"
+      :class="classNames.container"
       :role="roleAttribute"
       aria-hidden="true"
       :aria-labelledby="fullTitleId"
@@ -13,20 +13,27 @@
         tabIndex="-1"
         :class="classNames.overlay"
         @click="role === 'alertdialog' ? undefined : close"
-      ></div>
-      <div role="document" :class="classNames.document">
+      />
+      <div
+        role="document"
+        :class="classNames.document"
+      >
         <button
           v-if="closeButtonPosition == 'first'"
           data-a11y-dialog-hide
           type="button"
           :aria-label="closeButtonLabel"
+          :class="classNames.closeButton"
           @click="close"
-          :class="classNames.closeButton">
+        >
           <slot name="closeButtonContent">
             {{ '\u00D7' }}
           </slot>
         </button>
-        <p :id="fullTitleId" :class="classNames.title">
+        <p
+          :id="fullTitleId"
+          :class="classNames.title"
+        >
           <slot name="title" />
         </p>
         <slot />
@@ -35,8 +42,9 @@
           data-a11y-dialog-hide
           type="button"
           :aria-label="closeButtonLabel"
+          :class="classNames.closeButton"
           @click="close"
-          :class="classNames.closeButton">
+        >
           <slot name="closeButtonContent">
             {{ '\u00D7' }}
           </slot>
@@ -47,7 +55,7 @@
 </template>
 
 <script>
-  import A11yDialog from 'a11y-dialog'
+  import A11yDialog from 'a11y-dialog';
   import { computed, ref, onMounted, onUnmounted, nextTick } from "vue";
 
   export default {
@@ -80,7 +88,7 @@
             element: 'dialog-element',
             title: 'dialog-title',
             closeButton: 'dialog-close',
-          }
+          };
         },
       },
       role: {
@@ -88,7 +96,7 @@
         required: false,
         default: 'dialog',
         validator(value) {
-          return ['dialog', 'alertdialog'].includes(value)
+          return ['dialog', 'alertdialog'].includes(value);
         }
       },
       titleId: {
@@ -104,7 +112,7 @@
         required: false,
         default: 'first',
         validator(value) {
-          return ['first', 'last', 'none'].includes(value)
+          return ['first', 'last', 'none'].includes(value);
         }
       },
     },
@@ -114,7 +122,7 @@
       const rootElement = ref(null);
 
       const portalTarget = computed(() => {
-        return props.dialogRoot || props.appRoot
+        return props.dialogRoot || props.appRoot;
       });
 
       const fullTitleId = computed(() => {
@@ -130,23 +138,23 @@
       const instantiateDialog = async () => {
         await nextTick();
         // dialog = new A11yDialog(rootElement.value);
-        dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot)
-        emit('dialogRef', dialog)
-      }
+        dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot);
+        emit('dialogRef', dialog);
+      };
 
       onMounted(() => {
         instantiateDialog();
       });
 
       const close = () => {
-        dialog.hide()
-      }
+        dialog.hide();
+      };
 
       onUnmounted(() => {
         if (dialog) {
-          dialog.destroy()
+          dialog.destroy();
         }
-        emit('dialogRef')
+        emit('dialogRef');
       });
 
       return {
@@ -158,5 +166,5 @@
         rootElement,
       };
     },
-  }
+  };
 </script>

@@ -1,9 +1,9 @@
-import Vue3A11yDialog from './Vue3A11yDialog.vue'
+import Vue3A11yDialog from './Vue3A11yDialog.vue';
 
-export { Vue3A11yDialog }
+export { Vue3A11yDialog };
 
 export default {
   install: (app) => {
-    app.component('a11y-dialog', Vue3A11yDialog)
+    app.component('A11yDialog', Vue3A11yDialog);
   }
-}
+};

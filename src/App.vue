@@ -1,32 +1,50 @@
 <template>
-  <div id="dialog-root"></div>
+  <div id="dialog-root" />
   <h1>Dialog Test</h1>
   <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
-  <button type="button" data-test-id="dialogRefBtn" @click="openDialog">Open dialog via dialogRef</button>
+  <button
+    type="button"
+    data-test-id="dialogRefBtn"
+    @click="openDialog"
+  >
+    Open dialog via dialogRef
+  </button>
   <p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
-  <button type="button" data-test-id="dataA11yBtn" data-a11y-dialog-show="a11y-dialog">
+  <button
+    type="button"
+    data-test-id="dataA11yBtn"
+    data-a11y-dialog-show="a11y-dialog"
+  >
     Open the dialog via data attribute
   </button>
-  <button type="button" data-test-id="useAlertDialogRole" @click="testAlertDialogRole">
+  <button
+    type="button"
+    data-test-id="useAlertDialogRole"
+    @click="testAlertDialogRole"
+  >
     Use useAlertDialogRole
   </button>
-  <button type="button" data-test-id="useClosePositionFirst" @click="testClosePositionFirst">
+  <button
+    type="button"
+    data-test-id="useClosePositionFirst"
+    @click="testClosePositionFirst"
+  >
     Use closePositionFirst
   </button>
   <Vue3A11yDialog
     id="a11y-dialog"
-    appRoot="#app"
-    dialogRoot="#dialog-root"
-    closeButtonLabel="My close button label"
-    :closeButtonPosition="closePosition"
-    @dialog-ref="assignDialogRef"
-    titleId="uniqueTitleId"
+    app-root="#app"
+    dialog-root="#dialog-root"
+    close-button-label="My close button label"
+    :close-button-position="closePosition"
+    title-id="uniqueTitleId"
     :role="role"
+    @dialog-ref="assignDialogRef"
   >
-    <template v-slot:closeButtonContent>
+    <template #closeButtonContent>
       <span>Close</span>
     </template>
-    <template v-slot:title>
+    <template #title>
       <span data-test-id="dialogTitle">A11yDialog Test</span>
     </template>
     <div>
@@ -36,10 +54,7 @@
 </template>
 
 <script>
-import Vue3A11yDialog from './Vue3A11yDialog.vue'
-const classNames = {
-  container: 'dialog-container',
-}
+import Vue3A11yDialog from './Vue3A11yDialog.vue';
 export default {
   name: "DialogApp",
   components: {
@@ -72,7 +87,7 @@ export default {
       this.openDialog();
     }
   }
-}
+};
 </script>
 <style>
 #app {
