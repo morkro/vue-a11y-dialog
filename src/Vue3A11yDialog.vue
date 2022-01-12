@@ -137,7 +137,6 @@
 
       const instantiateDialog = async () => {
         await nextTick();
-        // dialog = new A11yDialog(rootElement.value);
         dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot);
         emit('dialogRef', dialog);
       };
