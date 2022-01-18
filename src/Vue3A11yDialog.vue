@@ -76,7 +76,6 @@
       /**
        * Object representing the classes for each HTML element of the dialog
        * element. See: https://a11y-dialog.netlify.app/usage/markup
-       * Adds `element` to represent the component element itself.
        */
       classNames: {
         type: Object,
@@ -85,7 +84,6 @@
             container: 'dialog-container',
             document: 'dialog-content',
             overlay: 'dialog-overlay',
-            element: 'dialog-element',
             title: 'dialog-title',
             closeButton: 'dialog-close',
           };
