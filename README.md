@@ -326,7 +326,7 @@ export default {
 
 ### `closeButtonContent`
 
-- **Name**: `closeButtonLabel`
+- **Name**: `closeButtonContent`
 - **Default**: `\u00D7` (×)
 - **Description**: The string that is the inner HTML of the close button.
 - **Usage**:
