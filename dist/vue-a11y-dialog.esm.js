@@ -15,7 +15,7 @@ var focusableSelectors = [
 ];
 var TAB_KEY = 9;
 var ESCAPE_KEY = 27;
-function A11yDialog(element) {
+function A11yDialog$1(element) {
   this._show = this.show.bind(this);
   this._hide = this.hide.bind(this);
   this._maintainFocus = this._maintainFocus.bind(this);
@@ -27,7 +27,7 @@ function A11yDialog(element) {
   this._listeners = {};
   this.create();
 }
-A11yDialog.prototype.create = function() {
+A11yDialog$1.prototype.create = function() {
   this.$el.setAttribute("aria-hidden", true);
   this.$el.setAttribute("aria-modal", true);
   this.$el.setAttribute("tabindex", -1);
@@ -45,7 +45,7 @@ A11yDialog.prototype.create = function() {
   this._fire("create");
   return this;
 };
-A11yDialog.prototype.show = function(event) {
+A11yDialog$1.prototype.show = function(event) {
   if (this.shown) {
     return this;
   }
@@ -58,7 +58,7 @@ A11yDialog.prototype.show = function(event) {
   this._fire("show", event);
   return this;
 };
-A11yDialog.prototype.hide = function(event) {
+A11yDialog$1.prototype.hide = function(event) {
   if (!this.shown) {
     return this;
   }
@@ -72,7 +72,7 @@ A11yDialog.prototype.hide = function(event) {
   this._fire("hide", event);
   return this;
 };
-A11yDialog.prototype.destroy = function() {
+A11yDialog$1.prototype.destroy = function() {
   this.hide();
   this._openers.forEach(function(opener) {
     opener.removeEventListener("click", this._show);
@@ -84,21 +84,21 @@ A11yDialog.prototype.destroy = function() {
   this._listeners = {};
   return this;
 };
-A11yDialog.prototype.on = function(type, handler) {
+A11yDialog$1.prototype.on = function(type, handler) {
   if (typeof this._listeners[type] === "undefined") {
     this._listeners[type] = [];
   }
   this._listeners[type].push(handler);
   return this;
 };
-A11yDialog.prototype.off = function(type, handler) {
+A11yDialog$1.prototype.off = function(type, handler) {
   var index2 = (this._listeners[type] || []).indexOf(handler);
   if (index2 > -1) {
     this._listeners[type].splice(index2, 1);
   }
   return this;
 };
-A11yDialog.prototype._fire = function(type, event) {
+A11yDialog$1.prototype._fire = function(type, event) {
   var listeners = this._listeners[type] || [];
   var domEvent = new CustomEvent(type, { detail: event });
   this.$el.dispatchEvent(domEvent);
@@ -106,7 +106,7 @@ A11yDialog.prototype._fire = function(type, event) {
     listener(this.$el, event);
   }.bind(this));
 };
-A11yDialog.prototype._bindKeypress = function(event) {
+A11yDialog$1.prototype._bindKeypress = function(event) {
   if (!this.$el.contains(document.activeElement))
     return;
   if (this.shown && event.which === ESCAPE_KEY && this.$el.getAttribute("role") !== "alertdialog") {
@@ -117,7 +117,7 @@ A11yDialog.prototype._bindKeypress = function(event) {
     trapTabKey(this.$el, event);
   }
 };
-A11yDialog.prototype._maintainFocus = function(event) {
+A11yDialog$1.prototype._maintainFocus = function(event) {
   if (this.shown && !event.target.closest('[aria-modal="true"]') && !event.target.closest("[data-a11y-dialog-ignore-focus-trap]")) {
     moveFocusToDialog(this.$el);
   }
@@ -150,7 +150,7 @@ function trapTabKey(node, event) {
 }
 function instantiateDialogs() {
   $$("[data-a11y-dialog]").forEach(function(node) {
-    new A11yDialog(node);
+    new A11yDialog$1(node);
   });
 }
 if (typeof document !== "undefined") {
@@ -172,7 +172,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 const _sfc_main = {
-  name: "Vue3A11yDialog",
+  name: "A11yDialog",
   props: {
     id: {
       type: String,
@@ -238,7 +238,7 @@ const _sfc_main = {
     });
     const instantiateDialog = async () => {
       await nextTick();
-      dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot);
+      dialog = new A11yDialog$1(rootElement.value, portalTarget.value || props.appRoot);
       emit("dialogRef", dialog);
     };
     onMounted(() => {
@@ -272,8 +272,8 @@ const _hoisted_6 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayStri
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Teleport, { to: $setup.portalTarget }, [
     createElementVNode("div", {
-      id: $props.id,
       ref: "rootElement",
+      id: $props.id,
       class: normalizeClass($props.classNames.container),
       role: $setup.roleAttribute,
       "aria-hidden": "true",
@@ -324,10 +324,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 10, _hoisted_1)
   ], 8, ["to"]);
 }
-var Vue3A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
 var index = {
   install: (app) => {
-    app.component("A11yDialog", Vue3A11yDialog);
+    app.component("a11y-dialog", A11yDialog);
   }
 };
-export { Vue3A11yDialog, index as default };
+export { A11yDialog, index as default };

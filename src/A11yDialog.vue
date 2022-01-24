@@ -1,8 +1,8 @@
 <template>
   <teleport :to="portalTarget">
     <div
-      :id="id"
       ref="rootElement"
+      :id="id"
       :class="classNames.container"
       :role="roleAttribute"
       aria-hidden="true"
@@ -55,11 +55,11 @@
 </template>
 
 <script>
-  import A11yDialog from 'a11y-dialog';
+  import A11yDialogLib from 'a11y-dialog';
   import { computed, ref, onMounted, onUnmounted, nextTick } from "vue";
 
   export default {
-    name: 'Vue3A11yDialog',
+    name: 'A11yDialog',
     props: {
       id: {
         type: String,
@@ -135,7 +135,7 @@
 
       const instantiateDialog = async () => {
         await nextTick();
-        dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot);
+        dialog = new A11yDialogLib(rootElement.value, portalTarget.value || props.appRoot);
         emit('dialogRef', dialog);
       };
 
