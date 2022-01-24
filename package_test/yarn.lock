@@ -256,7 +256,7 @@
     "fsevents" "~2.3.2"
 
 "vue-a11y-dialog@file:../vue-a11y-dialog-1.1.0.tgz":
-  "integrity" "sha512-QNWoAeubxTcCUfMQY6o+nfmXD53fFPqM05AN92UBjRG6Myq28xYn0uq+nlWNtfWCSr246gJKJf+L3+XAbx40bw=="
+  "integrity" "sha512-nhqiIZ8tYf2ik/AsSxYfhcmh6mpyLkNeXoYBtu7HlV/3KT+V62M3wsQTbELX1bbAqHI/rmS6U31cguOL0r/Erw=="
   "resolved" "file:../vue-a11y-dialog-1.1.0.tgz"
   "version" "1.1.0"
   dependencies:

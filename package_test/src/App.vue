@@ -1,5 +1,4 @@
 <template>
-  <div id="dialog-root" />
   <h1>Dialog Test</h1>
   <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
   <button
@@ -17,7 +16,7 @@
   >
     Open the dialog via data attribute
   </button>
-  <Vue3A11yDialog
+  <a11y-dialog
     id="a11y-dialog"
     app-root="#app"
     dialog-root="#dialog-root"
@@ -36,7 +35,7 @@
     <div>
       <p>This is some content</p>
     </div>
-  </Vue3A11yDialog>
+  </a11y-dialog>
 </template>
 <script>
   export default {
@@ -44,7 +43,7 @@
   };
 </script>
 <script setup>
-import { Vue3A11yDialog } from 'vue-a11y-dialog';
+import { A11yDialog } from 'vue-a11y-dialog';
 let dialog = null;
 let role = 'dialog';
 let closePosition = 'last';
