@@ -1,12 +1,8 @@
 # Vue A11yDialog [![Build Status](https://travis-ci.org/morkro/vue-a11y-dialog.svg?branch=master)](https://travis-ci.org/morkro/vue-a11y-dialog)
 
-This is a Vue.js wrapper component for [`a11y-dialog@7.3.0`](https://github.com/KittyGiraudel/a11y-dialog)
+This is a Vue.js wrapper component for [`a11y-dialog@7.3.0`](https://github.com/KittyGiraudel/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
 
-**Vue 3**
-
-This version comes with Vue 3 support and removes the dependency to. If you still need to support Vue 2, you can stay on version [`0.5.2`](https://github.com/morkro/vue-a11y-dialog/tree/0.5.2).
-
-- [Install](#install)
+- [Installation](#installation)
 - [Usage](#usage)
   - [Multiple dialogs](#multiple-dialogs)
 - [API](#api)
@@ -14,17 +10,25 @@ This version comes with Vue 3 support and removes the dependency to. If you stil
 - [Slots](#slots)
 - [Server-side Rendering](#server-side-rendering)
 
-## Install
+## Installation
+
+This library supports both Vue 3 and Vue 2. However, active maintenance is focused on Vue 3. If you still need to support Vue 2, you can stay on version [`0.5.2`](https://github.com/morkro/vue-a11y-dialog/tree/0.5.2).
+
+**Vue 3**
 
 ```bash
 npm install vue-a11y-dialog
 ```
 
+**Vue 2**
+
+```bash
+npm install vue-a11y-dialog@0.5.2
+```
+
 ## Usage
 
 In your `main.js` application file, install the component:
-
-### Vue 3
 
 ```js
 import { createApp } from 'vue'
@@ -178,7 +182,7 @@ export default {
 
 ## API
 
-> The `a11y-dialog` documentation is [here](https://a11y-dialog.netlify.app/)
+> All `a11y-dialog` instance methods are available, for further documentation see [here](https://a11y-dialog.netlify.app/).
 
 ### `id`
 
@@ -228,7 +232,7 @@ export default {
 - **Type**: `Object`
 - **Required**: `false`
 - **Default**: `{}`
-- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `document`, `title`, `closeButton`. See [a11y-dialog docs](http://edenspiekermann.github.io/a11y-dialog/#expected-dom-structure) for reference.
+- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `document`, `title`, `closeButton`. See [a11y-dialog docs](https://a11y-dialog.netlify.app/usage/markup) for reference.
 - **Usage**:
 
 ```html
@@ -349,7 +353,7 @@ export default {
 - **Usage**:
 
 ```html
-<a11y-dialog closeButtonPosition="last">
+<a11y-dialog close-button-position="last">
   <template v-slot:closeButtonContent>
     <span>Close dialog</span>
   </template>
