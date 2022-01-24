@@ -1,0 +1,43 @@
+.dialog-container {
+  display: flex;
+  z-index: 2;
+}
+
+.dialog-overlay {
+  background-color: rgba(43, 46, 56, 0.9);
+  animation: fade-in 200ms both;
+}
+
+.dialog-overlay,
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Crucial—dialog w/not hide visually without this rule */
+.dialog-container[aria-hidden="true"] {
+  display: none;
+}
+
+.dialog-content {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  z-index: 2;
+  position: relative;
+  padding: 1em;
+  max-width: 90%;
+  width: 600px;
+  border-radius: 2px;
+}
+
+/* Just some needless styles for fun */
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
