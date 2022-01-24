@@ -6,4 +6,4 @@ export default {
   install: (app) => {
     app.component('A11yDialog', Vue3A11yDialog)
   }
-}
+};
