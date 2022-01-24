@@ -6,11 +6,16 @@
   "license": "MIT",
   "author": "Moritz Kröger (https://moritz.berlin)",
   "private": false,
+  "files": ["dist"],
+  "browser": "dist/vue-a11y-dialog.umd.js",
   "main": "dist/vue-a11y-dialog.umd.js",
-  "files": [
-    "dist/vue-a11y-dialog.umd.js",
-    "dist/vue-a11y-dialog.es.js"
-  ],
+  "module": "dist/vue-a11y-dialog.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-a11y-dialog.esm.js",
+      "require": "./dist/vue-a11y-dialog.umd.js"
+    }
+  },
   "keywords": [
     "modal",
     "dialog",
