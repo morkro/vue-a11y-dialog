@@ -6,11 +6,15 @@
   "license": "MIT",
   "author": "Moritz Kröger (https://moritz.berlin)",
   "private": false,
+  "files": ["dist"],
   "main": "dist/vue-a11y-dialog.umd.js",
-  "files": [
-    "dist/vue-a11y-dialog.umd.js",
-    "dist/vue-a11y-dialog.es.js"
-  ],
+  "module": "dist/vue-a11y-dialog.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-a11y-dialog.es.js",
+      "require": "./dist/vue-a11y-dialog.umd.js"
+    }
+  },
   "keywords": [
     "modal",
     "dialog",
@@ -21,7 +25,7 @@
     "component"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite dev",
     "build": "vite build",
     "serve": "vite preview",
     "test": "npx cypress open-ct",

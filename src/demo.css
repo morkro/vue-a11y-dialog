@@ -1,10 +1,26 @@
+/** Demo-only **/
+:root {
+  --text-color: #2c3e50;
+  --background-color: white;
+  --overlay-color: rgba(43, 46, 56, 0.9);
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/** ⚠️ a11y-dialog related **/
 .dialog-container {
   display: flex;
   z-index: 2;
 }
 
 .dialog-overlay {
-  background-color: rgba(43, 46, 56, 0.9);
+  background-color: var(--overlay-color);
   animation: fade-in 200ms both;
 }
 
@@ -23,7 +39,7 @@
 }
 
 .dialog-content {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
   margin: auto;
   z-index: 2;
   position: relative;
@@ -31,13 +47,4 @@
   max-width: 90%;
   width: 600px;
   border-radius: 2px;
-}
-
-/* Just some needless styles for fun */
-body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }

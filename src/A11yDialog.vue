@@ -1,8 +1,8 @@
 <template>
   <teleport :to="portalTarget">
     <div
-      :id="id"
       ref="rootElement"
+      :id="id"
       :class="classNames.container"
       :role="roleAttribute"
       aria-hidden="true"
