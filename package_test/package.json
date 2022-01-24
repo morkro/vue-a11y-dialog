@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "vue": "^3.2.25",
-    "vue-a11y-dialog": "file:../vue-a11y-dialog-v1.1.0.tgz"
+    "vue-a11y-dialog": "file:../vue-a11y-dialog-1.1.0.tgz"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
