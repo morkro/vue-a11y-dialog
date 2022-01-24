@@ -1,32 +1,31 @@
 module.exports = {
   env: {
-    "browser": true,
-    "es2021": true,
-    "node": true,
-    "cypress/globals": true,
+    browser: true,
+    es2021: true,
+    node: true,
+    'cypress/globals': true,
   },
-  parser: "vue-eslint-parser",
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
   },
-  plugins: [
-    "vue",
-    "cypress"
-  ],
-  extends: [
-    "eslint:recommended",
-    "plugin:vue/vue3-essential",
-  ],
+  plugins: ['vue', 'cypress'],
+  extends: ['eslint:recommended', 'plugin:vue/vue3-essential'],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "vue/no-unused-vars": "error",
-    "semi": [2, "always"],
-    "cypress/no-assigning-return-values": "error",
-    "cypress/no-unnecessary-waiting": "error",
-    "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
-    "cypress/no-async-tests": "error",
-    "cypress/no-pause": "error"
-  }
-};
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'vue/script-indent': 'off',
+    'vue/html-indent': 'off',
+    'vue/no-unused-vars': 'error',
+    'vue/require-default-prop': 'off',
+    indent: 'off',
+    semi: [2, 'never'],
+    quotes: [2, 'single'],
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-force': 'warn',
+    'cypress/no-async-tests': 'error',
+    'cypress/no-pause': 'error',
+  },
+}

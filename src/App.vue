@@ -2,14 +2,13 @@
   <div id="dialog-root" />
   <h1>Dialog Test</h1>
   <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
-  <button
-    type="button"
-    data-test-id="dialogRefBtn"
-    @click="openDialog"
-  >
+  <button type="button" data-test-id="dialogRefBtn" @click="openDialog">
     Open dialog via dialogRef
   </button>
-  <p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
+  <p>
+    The following opens because a11y-dialog uses the
+    <code>data-a11y-dialog-show</code> data attribute:
+  </p>
   <button
     type="button"
     data-test-id="dataA11yBtn"
@@ -54,43 +53,43 @@
 </template>
 
 <script>
-import Vue3A11yDialog from './Vue3A11yDialog.vue';
-export default {
-  name: "DialogApp",
-  components: {
-    Vue3A11yDialog,
-  },
-  data: () => ({
-    dialog: null,
-    role: 'dialog',
-    closePosition: 'last',
-  }),
-  methods: {
-    openDialog() {
-      if (this.dialog) {
-        this.dialog.show();
-      }
+  import Vue3A11yDialog from './Vue3A11yDialog.vue'
+  export default {
+    name: 'DialogApp',
+    components: {
+      Vue3A11yDialog,
     },
-    assignDialogRef(dialog) {
-      this.dialog = dialog;
+    data: () => ({
+      dialog: null,
+      role: 'dialog',
+      closePosition: 'last',
+    }),
+    methods: {
+      openDialog() {
+        if (this.dialog) {
+          this.dialog.show()
+        }
+      },
+      assignDialogRef(dialog) {
+        this.dialog = dialog
+      },
+
+      // Tests using alertdialog role and opening modal
+      testAlertDialogRole() {
+        this.role = 'alertdialog'
+        this.openDialog()
+      },
+
+      // Tests using close position of first
+      testClosePositionFirst() {
+        this.closePosition = 'first'
+        this.openDialog()
+      },
     },
-    
-    // Tests using alertdialog role and opening modal
-    testAlertDialogRole() {
-      this.role = 'alertdialog';
-      this.openDialog();
-    },
-    
-    // Tests using close position of first
-    testClosePositionFirst() {
-      this.closePosition = 'first';
-      this.openDialog();
-    }
   }
-};
 </script>
 <style>
-#app {
-  margin-block-start: 3rem;
-}
+  #app {
+    margin-block-start: 3rem;
+  }
 </style>

@@ -14,10 +14,7 @@
         :class="classNames.overlay"
         @click="role === 'alertdialog' ? undefined : close"
       />
-      <div
-        role="document"
-        :class="classNames.document"
-      >
+      <div role="document" :class="classNames.document">
         <button
           v-if="closeButtonPosition == 'first'"
           data-a11y-dialog-hide
@@ -27,13 +24,10 @@
           @click="close"
         >
           <slot name="closeButtonContent">
-            {{ '\u00D7' }}
+            {{ "\u00D7" }}
           </slot>
         </button>
-        <p
-          :id="fullTitleId"
-          :class="classNames.title"
-        >
+        <p :id="fullTitleId" :class="classNames.title">
           <slot name="title" />
         </p>
         <slot />
@@ -46,7 +40,7 @@
           @click="close"
         >
           <slot name="closeButtonContent">
-            {{ '\u00D7' }}
+            {{ "\u00D7" }}
           </slot>
         </button>
       </div>
@@ -55,23 +49,23 @@
 </template>
 
 <script>
-  import A11yDialog from 'a11y-dialog';
-  import { computed, ref, onMounted, onUnmounted, nextTick } from "vue";
+  import A11yDialog from 'a11y-dialog'
+  import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 
   export default {
     name: 'Vue3A11yDialog',
     props: {
       id: {
         type: String,
-        required: true
+        required: true,
       },
       appRoot: {
         type: String,
-        required: true
+        required: true,
       },
       dialogRoot: {
         type: String,
-        required: true
+        required: true,
       },
       /**
        * Object representing the classes for each HTML element of the dialog
@@ -79,14 +73,14 @@
        */
       classNames: {
         type: Object,
-        default () {
+        default() {
           return {
             container: 'dialog-container',
             document: 'dialog-content',
             overlay: 'dialog-overlay',
             title: 'dialog-title',
             closeButton: 'dialog-close',
-          };
+          }
         },
       },
       role: {
@@ -94,8 +88,8 @@
         required: false,
         default: 'dialog',
         validator(value) {
-          return ['dialog', 'alertdialog'].includes(value);
-        }
+          return ['dialog', 'alertdialog'].includes(value)
+        },
       },
       titleId: {
         type: String,
@@ -103,56 +97,59 @@
       },
       closeButtonLabel: {
         type: String,
-        default: 'Close this dialog window'
+        default: 'Close this dialog window',
       },
       closeButtonPosition: {
         type: String,
         required: false,
         default: 'first',
         validator(value) {
-          return ['first', 'last', 'none'].includes(value);
-        }
+          return ['first', 'last', 'none'].includes(value)
+        },
       },
     },
     emits: ['dialogRef'],
     setup(props, { emit }) {
-      let dialog;
-      const rootElement = ref(null);
+      let dialog
+      const rootElement = ref(null)
 
       const portalTarget = computed(() => {
-        return props.dialogRoot || props.appRoot;
-      });
+        return props.dialogRoot || props.appRoot
+      })
 
       const fullTitleId = computed(() => {
-        return props.titleId || `${props.id}-title`;
-      });
+        return props.titleId || `${props.id}-title`
+      })
 
       const roleAttribute = computed(() => {
         return ['dialog', 'alertdialog'].includes(props.role)
           ? props.role
-          : 'dialog';
-      });
+          : 'dialog'
+      })
 
       const instantiateDialog = async () => {
-        await nextTick();
-        dialog = new A11yDialog(rootElement.value, portalTarget.value || props.appRoot);
-        emit('dialogRef', dialog);
-      };
+        await nextTick()
+        dialog = new A11yDialog(
+          rootElement.value,
+          portalTarget.value || props.appRoot
+        )
+        emit('dialogRef', dialog)
+      }
 
       onMounted(() => {
-        instantiateDialog();
-      });
+        instantiateDialog()
+      })
 
       const close = () => {
-        dialog.hide();
-      };
+        dialog.hide()
+      }
 
       onUnmounted(() => {
         if (dialog) {
-          dialog.destroy();
+          dialog.destroy()
         }
-        emit('dialogRef');
-      });
+        emit('dialogRef')
+      })
 
       return {
         dialog,
@@ -161,7 +158,7 @@
         fullTitleId,
         roleAttribute,
         rootElement,
-      };
+      }
     },
-  };
+  }
 </script>
