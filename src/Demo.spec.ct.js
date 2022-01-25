@@ -4,8 +4,8 @@ import Demo from './Demo.vue'
 describe('Demo', () => {
   it('shows Demo with trigger buttons', () => {
     mount(Demo)
-      .get('h1')
-      .contains('Dialog Test')
+      .get('header h1')
+      .contains('A11yDialog Demo')
       .get('[data-a11y-dialog-show="a11y-dialog"]')
       .get('[data-test-id="dialogRefBtn"]')
       .get('[data-test-id="dataA11yBtn"]')
@@ -28,7 +28,7 @@ describe('dialog', () => {
       .get('[role="document"]')
       .should('be.visible')
       .get('[data-test-id="dialogTitle"]')
-      .contains('A11yDialog Test')
+      .contains('A11yDialog Demo')
       .get('.dialog-close')
       .click()
       .get('[role="document"]')
