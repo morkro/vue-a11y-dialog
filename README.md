@@ -85,18 +85,6 @@ export default {
 }
 ```
 
-In your `index.html`, add a container where your dialog will be rendered into.
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
-```
-
 It's important to assign the direct reference to the dialog instance via `@dialog-ref`, otherwise there is no way to call its methods.
 
 Alternatively, you can also import the component directly into your file without installing it first:
