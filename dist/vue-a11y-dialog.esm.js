@@ -178,13 +178,10 @@ const _sfc_main = {
       type: String,
       required: true
     },
-    appRoot: {
-      type: String,
-      required: true
-    },
     dialogRoot: {
       type: String,
-      required: true
+      default: "body",
+      required: false
     },
     classNames: {
       type: Object,
@@ -223,12 +220,12 @@ const _sfc_main = {
       }
     }
   },
-  emits: ["dialogRef"],
+  emits: ["dialog-ref"],
   setup(props, { emit }) {
     let dialog;
     const rootElement = ref(null);
     const portalTarget = computed(() => {
-      return props.dialogRoot || props.appRoot;
+      return props.dialogRoot || "body";
     });
     const fullTitleId = computed(() => {
       return props.titleId || `${props.id}-title`;
@@ -238,8 +235,8 @@ const _sfc_main = {
     });
     const instantiateDialog = async () => {
       await nextTick();
-      dialog = new A11yDialog$1(rootElement.value, portalTarget.value || props.appRoot);
-      emit("dialogRef", dialog);
+      dialog = new A11yDialog$1(rootElement.value);
+      emit("dialog-ref", dialog);
     };
     onMounted(() => {
       instantiateDialog();
@@ -251,7 +248,7 @@ const _sfc_main = {
       if (dialog) {
         dialog.destroy();
       }
-      emit("dialogRef");
+      emit("dialog-ref");
     });
     return {
       dialog,
