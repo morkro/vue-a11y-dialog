@@ -7,12 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- tbd
+
+## [1.1.0] 2022-01-24
+
+### Added
+
+- Build setup now done with Vite [#31](https://github.com/morkro/vue-a11y-dialog/pull/31) (Thanks to [@roblevintennis](https://github.com/roblevintennis))
+- Demo configuration to run locally
+- Added ESM build output
+
 ### Changed
 
-- Updated `a11y-dialog` to latest version
+- Updated `a11y-dialog` to latest version [#31](https://github.com/morkro/vue-a11y-dialog/pull/31) (Thanks to [@roblevintennis](https://github.com/roblevintennis))
 - Updated development dependencies
+- Tests now done with Cypress [#31](https://github.com/morkro/vue-a11y-dialog/pull/31) (Thanks to [@roblevintennis](https://github.com/roblevintennis))
+- More updates to Vue 3 setup (e.g. `emits`) (Note to [#30](https://github.com/morkro/vue-a11y-dialog/pull/30))
 
-## [1.0.0]
+### Removed
+
+- Jest
+- Rollup (now under-the-hood configuration via Vite)
+
+## [1.0.0] - 2021-02-21
 
 This is the first major release that introduces breaking changes. From `1.0.0` onwards the API will support Vue 3.
 
