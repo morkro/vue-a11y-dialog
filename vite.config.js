@@ -33,13 +33,6 @@ export default defineConfig({
             vue: 'Vue',
           },
         },
-        {
-          format: 'cjs',
-          exports: 'named',
-          globals: {
-            vue: 'Vue'
-          }
-        }
       ],
     },
   },
