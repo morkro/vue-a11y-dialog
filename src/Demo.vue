@@ -1,6 +1,12 @@
 <template>
-  <main>
+  <!-- Required to be here instead of index.html for Cypress -->
+  <div id="dialog-root" />
+
+  <header>
     <h1>A11yDialog Demo</h1>
+  </header>
+
+  <main>
     <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
 
     <button type="button" data-test-id="dialogRefBtn" @click="openDialog">

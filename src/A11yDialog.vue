@@ -53,7 +53,7 @@
   import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 
   export default {
-    name: 'Vue3A11yDialog',
+    name: 'A11yDialog',
     props: {
       id: {
         type: String,

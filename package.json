@@ -8,10 +8,11 @@
   "private": false,
   "files": ["dist"],
   "main": "dist/vue-a11y-dialog.umd.js",
-  "module": "dist/vue-a11y-dialog.es.js",
+  "module": "dist/vue-a11y-dialog.esm.js",
+  "browser": "dist/vue-a11y-dialog.umd.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-a11y-dialog.es.js",
+      "import": "./dist/vue-a11y-dialog.esm.js",
       "require": "./dist/vue-a11y-dialog.umd.js"
     }
   },
@@ -49,7 +50,7 @@
     "@cypress/vue": "3",
     "@vitejs/plugin-vue": "^1.3.0",
     "@vue/compiler-sfc": "^3.0.5",
-    "cypress": "^8.2.0",
+    "cypress": "8.2.0",
     "eslint": "^8.6.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^8.2.0",

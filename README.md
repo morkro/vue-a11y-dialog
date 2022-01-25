@@ -32,10 +32,10 @@ In your `main.js` application file, install the component:
 
 ```js
 import { createApp } from 'vue'
-import VueA11yDialog from 'vue-a11y-dialog'
+import A11yDialog from 'vue-a11y-dialog'
 import App from './App.vue'
 
-createApp(App).use(VueA11yDialog).mount('#app')
+createApp(App).use(A11yDialog).mount('#app')
 ```
 
 Then use it as follows:
