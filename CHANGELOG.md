@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - tbd
 
+## [1.1.1] 2022-01-24
+
+### Removed
+
+- Remove obsolete concept of app root [#37](https://github.com/morkro/vue-a11y-dialog/pull/37) (Thanks to [@KittyGiraudel](https://github.com/KittyGiraudel))
+
+## [1.1.0] 2022-01-24
+
+### Added
+
+- Build setup now done with Vite [#31](https://github.com/morkro/vue-a11y-dialog/pull/31) (Thanks to [@roblevintennis](https://github.com/roblevintennis))
+- Demo configuration to run locally
+- Added ESM build output
+
+### Changed
+
+- Updated `a11y-dialog` to latest version [#31](https://github.com/morkro/vue-a11y-dialog/pull/31) (Thanks to [@roblevintennis](https://github.com/roblevintennis))
+- Updated development dependencies
 ## [1.1.0] 2022-01-24
 
 ### Added
