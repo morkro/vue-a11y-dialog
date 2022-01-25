@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,28 +16,27 @@ export default defineConfig({
       // into your library
       external: ['vue'],
       output: [{
-        format: "esm",
+        format: 'esm',
         esModule: true,
-        exports: "named",
+        exports: 'named',
         globals: {
-          vue: "Vue"
+          vue: 'Vue'
         }
       }, {
-        format: "umd",
-        // inlineDynamicImports: true,
-        interop: "esModule",
-        exports: "named",
+        format: 'umd',
+        interop: 'esModule',
+        exports: 'named',
         sourcemap: false,
         globals: {
-          vue: "Vue"
+          vue: 'Vue'
         }
       }, {
         format: 'cjs',
-        exports: "named",
+        exports: 'named',
         globals: {
-          vue: "Vue"
+          vue: 'Vue'
         }
       }],
     }
   }
-});
+})
