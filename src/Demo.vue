@@ -1,4 +1,6 @@
 <template>
+  <!-- Needs to stay here -- Cypress doesn't appear to pick up index.html -->
+  <div id="dialog-root"></div>
   <main>
     <h1>A11yDialog Demo</h1>
     <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
@@ -36,7 +38,6 @@
       Use <code>closePositionFirst</code>
     </button>
   </main>
-
   <a11y-dialog
     id="a11y-dialog"
     app-root="#app"
@@ -60,43 +61,43 @@
 </template>
 
 <script>
-  import A11yDialog from '../src/A11yDialog.vue'
-
-  export default {
-    name: 'DialogDemo',
-    components: {
-      'a11y-dialog': A11yDialog,
+import A11yDialog from './A11yDialog.vue';
+export default {
+  name: "DialogDemo",
+  components: {
+    'a11y-dialog': A11yDialog,
+  },
+  data: () => ({
+    dialog: null,
+    role: 'dialog',
+    closePosition: 'last',
+  }),
+  methods: {
+    openDialog() {
+      if (this.dialog) {
+        this.dialog.show();
+      }
     },
-    data: () => ({
-      dialog: null,
-      role: 'dialog',
-      closePosition: 'last',
-    }),
-    methods: {
-      openDialog() {
-        if (this.dialog) {
-          this.dialog.show()
-        }
-      },
-      assignDialogRef(dialog) {
-        this.dialog = dialog
-      },
-      // Tests using alertdialog role and opening modal
-      testAlertDialogRole() {
-        this.role = 'alertdialog'
-        this.openDialog()
-      },
-      // Tests using close position of first
-      testClosePositionFirst() {
-        this.closePosition = 'first'
-        this.openDialog()
-      },
+    assignDialogRef(dialog) {
+      this.dialog = dialog;
     },
+    
+    // Tests using alertdialog role and opening modal
+    testAlertDialogRole() {
+      this.role = 'alertdialog';
+      this.openDialog();
+    },
+    
+    // Tests using close position of first
+    testClosePositionFirst() {
+      this.closePosition = 'first';
+      this.openDialog();
+    }
   }
+};
 </script>
-
 <style>
-  #app {
-    margin-block-start: 3rem;
-  }
+#app {
+  margin-block-start: 3rem;
+}
 </style>

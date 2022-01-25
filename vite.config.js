@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,21 +9,35 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'vue-a11y-dialog',
-      fileName: (format) => `vue-a11y-dialog.${format}.js`,
+      fileName: (format) => `vue-a11y-dialog.${format}.js`
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue'],
-      output: {
-        exports: 'named',
-        sourcemap: false,
-        // Provide global variables to use in the UMD build
-        // for externalized deps
+      output: [{
+        format: "esm",
+        esModule: true,
+        exports: "named",
         globals: {
-          vue: 'Vue',
-        },
-      },
-    },
-  },
-})
+          vue: "Vue"
+        }
+      }, {
+        format: "umd",
+        // inlineDynamicImports: true,
+        interop: "esModule",
+        exports: "named",
+        sourcemap: false,
+        globals: {
+          vue: "Vue"
+        }
+      }, {
+        format: 'cjs',
+        exports: "named",
+        globals: {
+          vue: "Vue"
+        }
+      }],
+    }
+  }
+});

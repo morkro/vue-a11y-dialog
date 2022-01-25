@@ -34,7 +34,7 @@ body {
 }
 
 /* Crucial—dialog w/not hide visually without this rule */
-.dialog-container[aria-hidden="true"] {
+.dialog-container[aria-hidden='true'] {
   display: none;
 }
 

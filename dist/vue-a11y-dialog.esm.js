@@ -172,7 +172,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 const _sfc_main = {
-  name: "Vue3A11yDialog",
+  name: "A11yDialog",
   props: {
     id: {
       type: String,
