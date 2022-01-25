@@ -108,7 +108,9 @@
         },
       },
     },
-    emits: ['dialogRef'],
+
+    emits: ['dialog-ref'],
+
     setup(props, { emit }) {
       let dialog
       const rootElement = ref(null)
@@ -133,7 +135,7 @@
           rootElement.value,
           portalTarget.value || props.appRoot
         )
-        emit('dialogRef', dialog)
+        emit('dialog-ref', dialog)
       }
 
       onMounted(() => {
@@ -148,7 +150,7 @@
         if (dialog) {
           dialog.destroy()
         }
-        emit('dialogRef')
+        emit('dialog-ref')
       })
 
       return {

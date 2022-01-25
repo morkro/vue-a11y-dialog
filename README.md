@@ -266,7 +266,7 @@ export default {
 - **Usage**:
 
 ```html
-<a11y-dialog close-button-label="Close this super dialog">
+<a11y-dialog close-button-label="Close dialog">
   <!-- ... -->
 </a11y-dialog>
 ```

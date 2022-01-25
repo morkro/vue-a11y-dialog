@@ -84,6 +84,7 @@
         }
       },
       assignDialogRef(dialog) {
+        console.log('ref', dialog)
         this.dialog = dialog
       },
       // Tests using alertdialog role and opening modal
