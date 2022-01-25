@@ -66,8 +66,12 @@
 </template>
 
 <script>
+  import { A11yDialog } from '../dist/vue-a11y-dialog.esm'
   export default {
     name: 'DialogDemo',
+    components: {
+      A11yDialog
+    },
     data: () => ({
       dialog: null,
       role: 'dialog',
