@@ -1,40 +1,31 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   env: {
-    jest: true
+    browser: true,
+    es2021: true,
+    node: true,
+    'cypress/globals': true,
   },
-  extends: [
-    'plugin:vue/strongly-recommended',
-    'standard'
-  ],
-  // required to lint *.vue files
-  plugins: [
-    'vue'
-  ],
-  // custom rules
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
+  plugins: ['vue', 'cypress'],
+  extends: ['eslint:recommended', 'plugin:vue/vue3-essential'],
   rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/script-indent': 'off',
     'vue/html-indent': 'off',
+    'vue/no-unused-vars': 'error',
     'vue/require-default-prop': 'off',
-    'vue/max-attributes-per-line': [2, {
-      'singleline': 3,
-      'multiline': {
-        'max': 1,
-        'allowFirstLine': true
-      }
-    }],
-    'vue/component-name-in-template-casing': ['error', 'kebab-case', {
-      'ignores': []
-    }],
-    'vue/html-closing-bracket-newline': ['error', {
-      'singleline': 'never',
-      'multiline': 'never'
-    }],
-    'indent': 'off',
-    // allow paren-less arrow functions
-    'arrow-parens': 'off',
-    // allow async-await
-    'generator-star-spacing': 'off',
-  }
+    indent: 'off',
+    semi: [2, 'never'],
+    quotes: [2, 'single'],
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'warn',
+    'cypress/no-force': 'warn',
+    'cypress/no-async-tests': 'error',
+    'cypress/no-pause': 'error',
+  },
 }

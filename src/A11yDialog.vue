@@ -1,98 +1,164 @@
 <template>
   <teleport :to="portalTarget">
-    <div :id="id" :class="classNames.base" ref="rootElement">
+    <div
+      ref="rootElement"
+      :id="id"
+      :class="classNames.container"
+      :role="roleAttribute"
+      aria-hidden="true"
+      :aria-labelledby="fullTitleId"
+    >
       <div
         data-a11y-dialog-hide
         tabIndex="-1"
         :class="classNames.overlay"
-        @click="role === 'alertdialog' ? undefined : close" />
-
-      <component :is="dialogElement"
-        :role="roleAttribute"
-        :class="classNames.element"
-        :aria-labelledby="fullTitleId">
-        <div role="document" :class="classNames.document">
-          <button
-            data-a11y-dialog-hide
-            type="button"
-            :aria-label="closeButtonLabel"
-            @click="close"
-            :class="classNames.closeButton">
-            <slot name="closeButtonContent">
-              {{ '\u00D7' }}
-            </slot>
-          </button>
-
-          <h1 :id="fullTitleId" :class="classNames.title">
-            <slot name="title" />
-          </h1>
-
-          <slot />
-        </div>
-      </component>
+        @click="role === 'alertdialog' ? undefined : close"
+      />
+      <div role="document" :class="classNames.document">
+        <button
+          v-if="closeButtonPosition == 'first'"
+          data-a11y-dialog-hide
+          type="button"
+          :aria-label="closeButtonLabel"
+          :class="classNames.closeButton"
+          @click="close"
+        >
+          <slot name="closeButtonContent">
+            {{ "\u00D7" }}
+          </slot>
+        </button>
+        <p :id="fullTitleId" :class="classNames.title">
+          <slot name="title" />
+        </p>
+        <slot />
+        <button
+          v-if="closeButtonPosition == 'last'"
+          data-a11y-dialog-hide
+          type="button"
+          :aria-label="closeButtonLabel"
+          :class="classNames.closeButton"
+          @click="close"
+        >
+          <slot name="closeButtonContent">
+            {{ "\u00D7" }}
+          </slot>
+        </button>
+      </div>
     </div>
   </teleport>
 </template>
 
 <script>
   import A11yDialog from 'a11y-dialog'
+  import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 
   export default {
-    name: 'VueA11yDialog',
-
+    name: 'A11yDialog',
     props: {
-      id: { type: String, required: true },
-      appRoot: { type: [String, Array], required: true },
-      dialogRoot: { type: String, required: true },
-      classNames: { type: Object, default () { return {} } },
-      titleId: { type: String },
-      closeButtonLabel: { type: String, default: 'Close this dialog window' },
-      disableNative: { type: Boolean, default: false },
-      role: { type: String, default: 'dialog' }
+      id: {
+        type: String,
+        required: true,
+      },
+      appRoot: {
+        type: String,
+        required: true,
+      },
+      dialogRoot: {
+        type: String,
+        required: true,
+      },
+      /**
+       * Object representing the classes for each HTML element of the dialog
+       * element. See: https://a11y-dialog.netlify.app/usage/markup
+       */
+      classNames: {
+        type: Object,
+        default() {
+          return {
+            container: 'dialog-container',
+            document: 'dialog-content',
+            overlay: 'dialog-overlay',
+            title: 'dialog-title',
+            closeButton: 'dialog-close',
+          }
+        },
+      },
+      role: {
+        type: String,
+        required: false,
+        default: 'dialog',
+        validator(value) {
+          return ['dialog', 'alertdialog'].includes(value)
+        },
+      },
+      titleId: {
+        type: String,
+        default: '',
+      },
+      closeButtonLabel: {
+        type: String,
+        default: 'Close this dialog window',
+      },
+      closeButtonPosition: {
+        type: String,
+        required: false,
+        default: 'first',
+        validator(value) {
+          return ['first', 'last', 'none'].includes(value)
+        },
+      },
     },
+    emits: ['dialogRef'],
+    setup(props, { emit }) {
+      let dialog
+      const rootElement = ref(null)
 
-    computed: {
-      fullTitleId () {
-        return this.titleId || this.id + '-title'
-      },
-      dialogElement () {
-        return this.disableNative ? 'div' : 'dialog'
-      },
-      roleAttribute () {
-        return ['dialog', 'alertdialog'].includes(this.role)
-          ? this.role
+      const portalTarget = computed(() => {
+        return props.dialogRoot || props.appRoot
+      })
+
+      const fullTitleId = computed(() => {
+        return props.titleId || `${props.id}-title`
+      })
+
+      const roleAttribute = computed(() => {
+        return ['dialog', 'alertdialog'].includes(props.role)
+          ? props.role
           : 'dialog'
-      },
-      portalTarget () {
-        return this.dialogRoot || this.appRoot
-      }
-    },
+      })
 
-    data () {
+      const instantiateDialog = async () => {
+        await nextTick()
+        dialog = new A11yDialog(
+          rootElement.value,
+          portalTarget.value || props.appRoot
+        )
+        emit('dialogRef', dialog)
+      }
+
+      onMounted(() => {
+        instantiateDialog()
+      })
+
+      const close = () => {
+        dialog.hide()
+      }
+
+      onUnmounted(() => {
+        if (dialog) {
+          dialog.destroy()
+        }
+        emit('dialogRef')
+      })
+
       return {
-        dialog: null
+        dialog,
+        close,
+        portalTarget,
+        fullTitleId,
+        roleAttribute,
+        rootElement,
       }
     },
-
-    methods: {
-      close () {
-        this.dialog.hide()
-      }
-    },
-
-    mounted () {
-      this.$nextTick(function () {
-        this.dialog = new A11yDialog(this.$refs.rootElement, this.appRoot)
-        this.$emit('dialog-ref', this.dialog)
-      }.bind(this))
-    },
-
-    unmounted () {
-      if (this.dialog) {
-        this.dialog.destroy()
-      }
-
-      this.$emit('dialog-ref')
-    }
   }
 </script>

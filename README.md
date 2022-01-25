@@ -1,12 +1,8 @@
 # Vue A11yDialog [![Build Status](https://travis-ci.org/morkro/vue-a11y-dialog.svg?branch=master)](https://travis-ci.org/morkro/vue-a11y-dialog)
 
-This is a Vue.js wrapper component for [`a11y-dialog@5.4.1`](https://github.com/edenspiekermann/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+This is a Vue.js wrapper component for [`a11y-dialog@7.3.0`](https://github.com/KittyGiraudel/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
 
-**Vue 2 and 3**
-
-The newest major release of this package comes with Vue 3 support and removes the dependency to [`portal-vue@2.1.7`](https://github.com/LinusBorg/portal-vue). If you still need to support Vue 2, you can stay on version [`0.5.2`](https://github.com/morkro/vue-a11y-dialog/tree/0.5.2).
-
-- [Install](#install)
+- [Installation](#installation)
 - [Usage](#usage)
   - [Multiple dialogs](#multiple-dialogs)
 - [API](#api)
@@ -14,32 +10,32 @@ The newest major release of this package comes with Vue 3 support and removes th
 - [Slots](#slots)
 - [Server-side Rendering](#server-side-rendering)
 
-## Install
+## Installation
+
+This library supports both Vue 3 and Vue 2. However, active maintenance is focused on Vue 3. If you still need to support Vue 2, you can stay on version [`0.5.2`](https://github.com/morkro/vue-a11y-dialog/tree/0.5.2).
+
+**Vue 3**
 
 ```bash
 npm install vue-a11y-dialog
+```
+
+**Vue 2**
+
+```bash
+npm install vue-a11y-dialog@0.5.2
 ```
 
 ## Usage
 
 In your `main.js` application file, install the component:
 
-### Vue 2
-
-```js
-import VueA11yDialog from 'vue-a11y-dialog'
-
-Vue.use(VueA11yDialog)
-```
-
-### Vue 3
-
 ```js
 import { createApp } from 'vue'
-import VueA11yDialog from 'vue-a11y-dialog'
+import A11yDialog from 'vue-a11y-dialog'
 import App from './App.vue'
 
-createApp(App).use(VueA11yDialog).mount('#app')
+createApp(App).use(A11yDialog).mount('#app')
 ```
 
 Then use it as follows:
@@ -186,21 +182,7 @@ export default {
 
 ## API
 
-> All `a11y-dialog` instance methods are available, see their [docs](https://github.com/edenspiekermann/a11y-dialog#js-api) for more.
-
-### `disable-native`
-
-- **Property**: `disable-native`
-- **Type**: `Boolean`
-- **Default**: `false`
-- **Description**: Per default we're using the native `<dialog>` element. However, if you want to disable that and use a `<div role="dialog">` instead, you can just do that by adding this attribute. This gives you full control (and responsibilites) over styling. Read the [`a11y-dialog` Styling layer documentation](http://edenspiekermann.github.io/a11y-dialog/#styling-layer) for more information.
-- **Usage**:
-
-```html
-<a11y-dialog disable-native>
-  <!-- ... -->
-</a11y-dialog>
-```
+> All `a11y-dialog` instance methods are available, for further documentation see [here](https://a11y-dialog.netlify.app/).
 
 ### `id`
 
@@ -250,7 +232,7 @@ export default {
 - **Type**: `Object`
 - **Required**: `false`
 - **Default**: `{}`
-- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `element`, `document`, `title`, `closeButton`. See [a11y-dialog docs](http://edenspiekermann.github.io/a11y-dialog/#expected-dom-structure) for reference.
+- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `document`, `title`, `closeButton`. See [a11y-dialog docs](https://a11y-dialog.netlify.app/usage/markup) for reference.
 - **Usage**:
 
 ```html
@@ -348,13 +330,30 @@ export default {
 
 ### `closeButtonContent`
 
-- **Name**: `closeButtonLabel`
+- **Name**: `closeButtonContent`
 - **Default**: `\u00D7` (×)
 - **Description**: The string that is the inner HTML of the close button.
 - **Usage**:
 
 ```html
 <a11y-dialog>
+  <template v-slot:closeButtonContent>
+    <span>Close dialog</span>
+  </template>
+  <!-- ... -->
+</a11y-dialog>
+```
+
+
+### `closeButtonPosition`
+
+- **Name**: `closeButtonPosition`
+- **Default**: `first`
+- **Description**: One of `first`, `last`, or `none`
+- **Usage**:
+
+```html
+<a11y-dialog close-button-position="last">
   <template v-slot:closeButtonContent>
     <span>Close dialog</span>
   </template>

@@ -1,4 +1,4 @@
-import A11yDialog from './A11yDialog'
+import A11yDialog from './A11yDialog.vue'
 
 export { A11yDialog }
 
