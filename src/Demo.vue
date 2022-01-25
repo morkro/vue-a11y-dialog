@@ -1,7 +1,4 @@
 <template>
-  <!-- Required to be here instead of index.html for Cypress -->
-  <div id="dialog-root" />
-
   <header>
     <h1>A11yDialog Demo</h1>
   </header>
@@ -45,8 +42,6 @@
 
   <a11y-dialog
     id="a11y-dialog"
-    app-root="#app"
-    dialog-root="#dialog-root"
     close-button-label="My close button label"
     :close-button-position="closePosition"
     title-id="uniqueTitleId"

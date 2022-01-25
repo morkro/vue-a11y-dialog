@@ -59,13 +59,10 @@
         type: String,
         required: true,
       },
-      appRoot: {
-        type: String,
-        required: true,
-      },
       dialogRoot: {
         type: String,
-        required: true,
+        default: 'body',
+        required: false,
       },
       /**
        * Object representing the classes for each HTML element of the dialog
@@ -116,7 +113,7 @@
       const rootElement = ref(null)
 
       const portalTarget = computed(() => {
-        return props.dialogRoot || props.appRoot
+        return props.dialogRoot || 'body'
       })
 
       const fullTitleId = computed(() => {
@@ -131,10 +128,7 @@
 
       const instantiateDialog = async () => {
         await nextTick()
-        dialog = new A11yDialog(
-          rootElement.value,
-          portalTarget.value || props.appRoot
-        )
+        dialog = new A11yDialog(rootElement.value)
         emit('dialog-ref', dialog)
       }
 

@@ -50,8 +50,6 @@ Then use it as follows:
 
     <a11y-dialog
       id="app-dialog"
-      app-root="#app"
-      dialog-root="#dialog-root"
       @dialog-ref="assignDialogRef"
     >
       <template v-slot:title>
@@ -95,7 +93,6 @@ In your `index.html`, add a container where your dialog will be rendered into.
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <div id="dialog-root"></div>
   </body>
 </html>
 ```
@@ -131,8 +128,6 @@ In your `<template>`:
     <!-- First dialog -->
     <a11y-dialog
       id="first-dialog"
-      app-root="#app"
-      dialog-root="#dialog-root"
       @dialog-ref="dialog => assignDialogRef('first', dialog)"
     >
       <template v-slot:title>
@@ -146,8 +141,6 @@ In your `<template>`:
     <!-- Second dialog -->
     <a11y-dialog
       id="second-dialog"
-      app-root="#app"
-      dialog-root="#dialog-root"
       @dialog-ref="dialog => assignDialogRef('second', dialog)"
     >
       <template v-slot:title>
@@ -198,25 +191,12 @@ export default {
 </a11y-dialog>
 ```
 
-### `app-root`
-
-- **Property**: `app-root`
-- **Type**: `String`, `Array<String>` — CSS Selector string.
-- **Required**: `true`
-- **Description**: The selector(s) `a11y-dialog` needs to disable when the dialog is open.
-- **Usage**:
-
-```html
-<a11y-dialog app-root="#app">
-  <!-- ... -->
-</a11y-dialog>
-```
-
 ### `dialog-root`
 
 - **Property**: `dialog-root`
 - **Type**: `String` — CSS Selector string.
-- **Required**: `true`
+- **Required**: `false`
+- **Default**: `'body'`
 - **Description**: The container for the dialog to be rendered into.
 - **Usage**:
 
