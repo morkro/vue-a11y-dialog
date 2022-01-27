@@ -1,6 +1,6 @@
 # Vue A11yDialog [![Build Status](https://travis-ci.org/morkro/vue-a11y-dialog.svg?branch=master)](https://travis-ci.org/morkro/vue-a11y-dialog)
 
-This is a Vue.js wrapper component for [`a11y-dialog@7.3.0`](https://github.com/KittyGiraudel/a11y-dialog) ([**demo**](https://codesandbox.io/s/rj20wr1kpp)).
+This is a Vue.js wrapper component for [`a11y-dialog@7.3.0`](https://github.com/KittyGiraudel/a11y-dialog) ([**Demo on CodeSandbox**](https://codesandbox.io/s/rj20wr1kpp)).
 
 - [Installation](#installation)
 - [Usage](#usage)
