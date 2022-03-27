@@ -25,14 +25,6 @@
 
     <button
       type="button"
-      data-test-id="useAlertDialogRole"
-      @click="testAlertDialogRole"
-    >
-      Use <code>useAlertDialogRole</code>
-    </button>
-
-    <button
-      type="button"
       data-test-id="useClosePositionFirst"
       @click="testClosePositionFirst"
     >
@@ -80,11 +72,6 @@
       },
       assignDialogRef(dialog) {
         this.dialog = dialog
-      },
-      // Tests using alertdialog role and opening modal
-      testAlertDialogRole() {
-        this.role = 'alertdialog'
-        this.openDialog()
       },
       // Tests using close position of first
       testClosePositionFirst() {
