@@ -9,7 +9,7 @@
       :aria-labelledby="fullTitleId"
     >
       <div
-        data-a11y-dialog-hide
+        :data-a11y-dialog-hide="role === 'alertdialog' ? undefined : true"
         tabIndex="-1"
         :class="classNames.overlay"
         @click="role === 'alertdialog' ? undefined : close"
