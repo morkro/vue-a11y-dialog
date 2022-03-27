@@ -92,13 +92,3 @@ describe('aria', () => {
       .should('not.exist')
   })
 })
-
-describe('alertdialog', () => {
-  it('should use alertdialog role', () => {
-    mount(Demo)
-      .get('[data-test-id="useAlertDialogRole"]')
-      .click()
-      .get('[role="alertdialog"]')
-      .should('have.focus')
-  })
-})
