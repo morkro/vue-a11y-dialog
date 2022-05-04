@@ -200,11 +200,11 @@ export default {
 - **Type**: `Object`
 - **Required**: `false`
 - **Default**: `{}`
-- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `base`, `overlay`, `document`, `title`, `closeButton`. See [a11y-dialog docs](https://a11y-dialog.netlify.app/usage/markup) for reference.
+- **Description**: Object of classes for each HTML element of the dialog element. Keys are: `container`, `overlay`, `document`, `title`, `closeButton`. See [a11y-dialog docs](https://a11y-dialog.netlify.app/usage/markup) for reference.
 - **Usage**:
 
 ```html
-<a11y-dialog :class-names="{ base: 'base-class', overlay: 'overlay-class' }">
+<a11y-dialog :class-names="{ container: 'container-class', overlay: 'overlay-class' }">
   <!-- ... -->
 </a11y-dialog>
 ```
